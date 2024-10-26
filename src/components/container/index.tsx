@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react';
-import { ScaledSize } from '../../theme/Size';
 import styles from './styles';
+import { ScaledSize } from '../../theme/sizes';
 
 export interface IProps {
 	backgroundColor?: string;
@@ -33,11 +33,15 @@ export interface IProps {
 	borderRadius?: ScaledSize;
 	borderWidth?: ScaledSize;
 	boxShadow?: string;
+
+	// Enable debug mode to see the container's boundaries
+	debug?: boolean;
 }
 
-const Container: React.FC<PropsWithChildren<IProps>> = ({ children, ...props }) => {
+const Container: React.FC<PropsWithChildren<IProps>> = ({ children, debug, ...props }) => {
 	const classes = styles(props);
-	return <div style={classes}>{children}</div>;
+	const enableDebug = debug ? { outline: '1px solid black' } : {};
+	return <div style={{...classes, ...enableDebug}}>{children}</div>;
 };
 
 export default Container;
