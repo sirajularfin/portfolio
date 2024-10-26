@@ -28,9 +28,9 @@ export interface IProps {
 	horizontalGapBetweenObjects?: ScaledSize;
 	verticalGapBetweenObjects?: ScaledSize;
 
-	border?: string;
 	borderColor?: string;
 	borderRadius?: ScaledSize;
+	borderStyle?: 'solid' | 'dotted' | 'dashed';
 	borderWidth?: ScaledSize;
 	boxShadow?: string;
 

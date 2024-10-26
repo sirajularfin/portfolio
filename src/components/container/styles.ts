@@ -34,9 +34,10 @@ const styles = (styles: IProps): CSSProperties => ({
     columnGap: styles.horizontalGapBetweenObjects,
 
     // Border
-    borderWidth: styles.borderWidth,
     borderColor: styles.borderColor,
     borderRadius: styles.borderRadius,
+    borderStyle: styles.borderStyle,
+    borderWidth: styles.borderWidth,
     boxShadow: styles.boxShadow,
 });
 
