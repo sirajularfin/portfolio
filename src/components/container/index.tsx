@@ -1,7 +1,8 @@
-import React, { CSSProperties, PropsWithChildren } from 'react';
+import React, { PropsWithChildren } from 'react';
 import { ScaledSize } from '../../theme/Size';
+import styles from './styles';
 
-interface Props {
+export interface IProps {
 	backgroundColor?: string;
 
 	height?: ScaledSize;
@@ -34,48 +35,9 @@ interface Props {
 	boxShadow?: string;
 }
 
-const Container: React.FC<PropsWithChildren<Props>> = ({ children, ...props }) => {
-	const style: CSSProperties = {
-		// Background
-		backgroundColor: props.backgroundColor,
-
-		// Size
-		height: props.height,
-		width: props.width,
-
-		// Padding
-		padding: props.padding,
-		paddingBottom: props.paddingBottom,
-		paddingLeft: props.paddingLeft,
-		paddingRight: props.paddingRight,
-		paddingTop: props.paddingTop,
-
-		// Margin
-		margin: props.margin,
-		marginBottom: props.marginBottom,
-		marginLeft: props.marginLeft,
-		marginRight: props.marginRight,
-		marginTop: props.marginTop,
-
-		// Flexbox
-		display: props.flex ? 'flex' : 'block',
-		flexDirection: props.layout === 'horizontal' ? 'column' : props.layout === 'vertical' ? 'row' : undefined,
-		flexWrap: props.layout === 'wrap' ? 'wrap' : 'nowrap',
-		alignItems: props.layout !== 'vertical' ? props.alignY : props.alignX,
-		alignSelf: props.alignSelf,
-		justifyContent: props.layout !== 'horizontal' ? props.alignX : props.alignY,
-		rowGap: props.verticalGapBetweenObjects,
-		columnGap: props.horizontalGapBetweenObjects,
-
-		// Border
-		border: props.border,
-		borderColor: props.borderColor,
-		borderRadius: props.borderRadius,
-		borderWidth: props.borderWidth,
-		boxShadow: props.boxShadow,
-	};
-
-	return <div style={style}>{children}</div>;
+const Container: React.FC<PropsWithChildren<IProps>> = ({ children, ...props }) => {
+	const classes = styles(props);
+	return <div style={classes}>{children}</div>;
 };
 
 export default Container;
